@@ -1,0 +1,154 @@
+h1{
+    text-align: center !important;
+    padding: 1em;
+    margin: 1em;
+    background-color: whitesmoke;
+    border-radius: 1em;
+} 
+
+h1:hover{
+    text-align: center !important;
+    padding: 1em;
+    margin: 1em;
+    background-color: rgb(255, 251, 215);
+    border-radius: 1em;
+    text-shadow: 10em;
+} 
+
+body{
+    background-color: rgb(255, 241, 147);
+}
+
+p{
+  font-size: 2em;
+  font-variant: small-caps;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.cart{
+  flex: 1;
+  border: 2px;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1.25em;
+  background-color: rgba(0, 255, 238, 0.116);
+  border-color: brown;
+}
+
+button{
+margin: 0.25em;
+background-color: rgb(255, 231, 231);
+padding: 1em;
+font-style: bold;
+font-weight: 1000;
+border-radius: 0.5em;
+border-color: rgb(255, 147, 75);
+}
+
+button:hover{
+background-color: rgb(255, 179, 65);
+padding: 1em;
+font-style: italic;
+font-weight: 1000;
+transition: 0.001s;
+border-radius: 0.5em;
+border-color: rgb(255, 255, 255);
+}
+
+table, th, td{
+    border:4px solid rgb(255, 255, 255);
+    font-size: 1.5em;
+    width: 30em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+    border-radius: 0.2em;
+    font-variant: small-caps;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+  }
+img {
+    margin: auto;
+    display:block;
+    align-content:center;
+    border-radius: 12em;
+}
+
+img:hover{
+    margin: auto;
+    display:block;
+    align-content:center;
+    border-radius: 4em;
+    image-resolution: 100px;
+}
+
+.message{
+  background-color: rgb(255, 235, 217);
+  padding: 0.2em;
+  font-style: italic;
+  font-weight: 100;
+  border-color: rgb(255, 127, 180);
+  border-radius:2em;
+}
+.message:hover{
+  background-color: rgb(255, 198, 148);
+  padding: 0.2em;
+  font-style: italic;
+  font-weight: 100;
+  border-color: rgb(255, 127, 180);
+  border-radius: 1.5em;
+}
+.input{
+  background-color: rgb(255, 235, 217);
+  padding: 0.25em;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8em;
+}
+
+.input:hover{
+  background-color: rgb(250, 186, 131);
+  padding: 0.25em;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8em;
+}
+
+.small_pizza{
+flex: 1;
+ border: 2px;
+ padding: 0.8em;
+ margin: 0.8em;
+ border-radius: 1.25em;
+ background-color: rgb(255, 192, 153);
+}
+.medium_pizza{
+ flex: 1;
+ border: 2px;
+ padding: 0.8em;
+ margin: 0.8em;
+ border-radius: 1.25em;
+ background-color: rgb(160, 250, 135);
+}
+.large_pizza{
+ flex: 1;
+ border: 2px;
+ padding: 0.8em;
+ margin: 0.8em;
+ border-radius: 1.25em;
+ background-color: rgb(144, 237, 247);
+}
+.footer{
+ border: 2px;
+ padding: 1em;
+ margin: 1em;
+ border-radius: 1.25em;
+ background-color: rgb(253, 204, 130);
+}
+@media (min-width: 768px){
+ .pizzas{
+ display: flex;
+}
+.table{
+  display: flex;
+}
+
+}
