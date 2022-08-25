@@ -19,7 +19,7 @@
         }
 
         .one__icon{
-            background: hwb(48 0% 0% / 0.3);
+            background: linear-gradient(hwb(48 0% 0% / 0.3));
             height: 70px;
             width: 70px;
             margin:0.2em;
@@ -34,6 +34,7 @@
 
         .one__icon:hover{
             color: rgb(0, 0, 0);
+            background: linear-gradient(145deg, #e6cbaf, #fff2d0);
         }
 
         h2{
@@ -54,12 +55,13 @@
             padding: 1em;
             margin: 0em;
             border-radius: 1.25em;
-            background-color: rgb(229, 196, 157);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             border-color: brown;
-            box-shadow: 4px 2px 6px #bebebe;
+            box-shadow: 4px 2px 6px brown;
         }
         .cart:hover{
-            background-color: rgb(255, 240, 192);
+            font:bold
+            /*background: linear-gradient(145deg, #e6cbaf, #fff2d0);*/
         }
 
         table{
@@ -74,14 +76,17 @@
         }
 
         button{
-            background-color: rgba(229, 196, 157);
+            background-color: rgb(231, 229, 211);
             border-radius: 0.5em;
             border-width: 0.0em;
             box-shadow: 4px 2px 6px #bebebe;
+            color: brown;
         }
 
         button:hover{
-            background-color: rgb(255, 240, 192);
+            background: linear-gradient(145deg, #e6cbaf68, #fff2d03c);
+            color: black;
+            box-shadow: 4px 2px 6px brown;
         }
 
         input{
@@ -90,6 +95,7 @@
             border-radius: 0.5em;
             border-width: 0.0em;
             box-shadow: 4px 2px 6px #bebebe;
+            background: linear-gradient(hwb(48 0% 0% / 0.3));
         }
         input:hover{
             background-color: blanchedalmond;
