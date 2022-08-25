@@ -144,18 +144,18 @@
                     </tr>                   
                 </template>
                 <tr>
-                        <td colspan="2">
-                            <div x-show="payNow">
+                        <td colspan="1">
+                            <div class="payNow">
                                 <div class="message" x-text="paymentMessage"></div>
                                 <div>
                                     <label for="">Payment Amount = R <span x-text="paymentAmount"></span> </label>
                                     <input class="input" type="number" placeholder="Payment Amount" x-model="paymentAmount">
-                                    <button x-show='pizza.total()>0' x-on:click="makePayment" class="btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY NOW</button>                                            
+                                    <button class='pizza.total()>0' x-on:click="makePayment" class="btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY NOW</button>                                            
                                 </div>  
                             </div>                    
                         </td>
                         <td>
-                            <button x-show='cartTotal()>0' x-show="payNow" x-on:click="payNow=true" class= "btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY</button>
+                            <button class='cart.total()>0' class="payNow" x-on:click="payNow=true" class= "btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY</button>
                         </td>
                     </tr>
             </table>

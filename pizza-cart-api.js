@@ -121,7 +121,6 @@ document.addEventListener('alpine:init', () => {
                     }  
                    else if(this.paymentAmount >= this.cart.total ) {
                         this.paymentMessage = 'Payment successful!'
-                        this.message = 'Paid'
           
                         setTimeout(() => {
                           this.checkout = false;
