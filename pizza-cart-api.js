@@ -38,12 +38,32 @@ document.addEventListener('alpine:init', () => {
                     });
             },
 
+            payCart(){
+
+                const url = `https://pizza-cart-api.herokuapp.com/api/pizza-cart/${this.cartId}/get`;
+      
+                axios
+                    .get(url)
+                    .then((result) => {
+                      this.cart = result.data.total;
+                    });
+      
+              },
+
+            activeCart(){
+                return
+                axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/username/:username/active')
+              },
 
             message: 'Eating pizzas',
             username: 'Prince',
             pizzas:[],
-            cartId:'gY6sn1yAMv',
+            cartId:'RmPklbymA2',
             cart:{total:0},
+            payNow: false,
+            paymentAmount: 0.00,
+            paymentMessage:'',
+            display: true,            
 
             add(pizza){
                 //to be able to add a pizza to the cart I need a cart Id
@@ -85,6 +105,42 @@ document.addEventListener('alpine:init', () => {
                 //alert(pizza.id)
                 //alert(JSON.stringify(pizza))
                 //alert(this.pizza.flavour+' '+this.pizza.size+' pizza bought')
+            },
+
+            pay(pizza){
+
+                const params = {
+                  cart_code: this.cartId,
+                }
+                
+                axios
+                    .post('https://pizza-cart-api.herokuapp.com/api/pizza-cart/pay', params)
+                    .then(() => {
+                      if(!this.paymentAmount){
+                        this.paymentMessage = 'No amount entered!'
+                    }  
+                   else if(this.paymentAmount >= this.cart.total ) {
+                        this.paymentMessage = 'Payment successful!'
+                        this.message = 'Paid'
+          
+                        setTimeout(() => {
+                          this.checkout = false;
+                          this.cart.total= 0;
+                          this.userName="";
+                          this.display=false;
+                     },3000);
+          
+          
+                    } else {
+                        this.paymentMessage = 'insufficient amount!'  
+                        
+                        
+                    }  
+                    
+                     
+                    } )
+                    //.catch(err => alert(err));
+          
             },
         }
 

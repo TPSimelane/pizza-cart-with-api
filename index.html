@@ -12,42 +12,72 @@
     
     <style>
         body{
+            padding-left: 1em;
             background-color: rgb(231, 229, 211);
-            font-family: sans-serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-shadow: 4px 2px 4px #bebebe;
         }
 
         .one__icon{
-            margin-left: 5em;
             background: hwb(48 0% 0% / 0.3);
-            height: 80px;
-            width: 80px;
-            margin:0 auto;
+            height: 70px;
+            width: 70px;
+            margin:0.2em;
             border-radius: 50%;
             display: grid;
             place-items: center;
             font-size: 1em;
-            transform: rotate(0deg);
+            transform: rotate(20deg);
             color: brown;
+            box-shadow: 4px 2px 6px brown;
+        }
+
+        .one__icon:hover{
+            color: rgb(0, 0, 0);
+        }
+
+        h2{
+            padding: 0.5em;
+            margin: 0em;
+            font-size: 3em;
+            color: brown;
+            text-shadow: 4px 2px 2px #bebebe;
+            box-shadow: 4px 2px 6px #bebebe;
+            text-rendering: auto;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         .cart{
-            width: 18em;
+            width: 30em;
             flex: 1;
             border: 2px;
             padding: 1em;
-            margin: 1em;
+            margin: 0em;
             border-radius: 1.25em;
             background-color: rgb(229, 196, 157);
             border-color: brown;
+            box-shadow: 4px 2px 6px #bebebe;
         }
         .cart:hover{
             background-color: rgb(255, 240, 192);
         }
 
+        table{
+            width: 30em;
+            margin: 1em;
+            padding-left: 0.5em;
+            padding-bottom: 1em;
+            /*box-shadow: 4px 2px 6px #bebebe; ;*/
+        }
+        tr{
+            box-shadow: 4px 2px 6px #bebebe;
+        }
+
         button{
             background-color: rgba(229, 196, 157);
             border-radius: 0.5em;
-            border-width: 0.01em;
+            border-width: 0.0em;
+            box-shadow: 4px 2px 6px #bebebe;
         }
 
         button:hover{
@@ -55,8 +85,11 @@
         }
 
         input{
+            margin: 1em;
+            text-shadow: 4px 2px 6px #bebebe;
             border-radius: 0.5em;
-            border-width: 0.01em;
+            border-width: 0.0em;
+            box-shadow: 4px 2px 6px #bebebe;
         }
         input:hover{
             background-color: blanchedalmond;
@@ -78,9 +111,7 @@
             <h2>PIZZA BAR</h2>
         </div>
         <div x-text="message"></div>
-        <div x-text="cartId"></div>
-        
-            
+        <div x-text="cartId"></div>            
 
         <div>
             What is your name: <input type="text" x-model="username">
@@ -94,71 +125,55 @@
             </div>
         </div>
 
-        <div class="header">
-			<div class="f3">
-				<h1></h1>
-			</div>
-			<div class="f1">
-				<!--<a href="" class="cart-link" x-on:click="showCart=true"> </a>-->
-					<button x-show="!showCart" x-on:click="showCart=true" x-transition><img src="shopping-cart.png" alt="shopping cart" width="20px" height="20px">SHOW CART</button>
-                        <span><h2><strong x-show='cartQty()>0'><span x-text="cartQty()"></span> PIZZAS IN THE CART.</strong></h2></span>
-				<!-- <span>0.00</span> -->
-            
-			</div>
-		</div>
-
-
         <div class="cart">
-            <div class="cart-box">
-			    <div class="cart" x-show="showCart" x-transition>
-                    <div>
-                        <button x-on:click="showCart=false">
-                            <img src="shopping-cart.png" alt="shopping cart" width="20px" height="20px">
-                            CLOSE CART</button>
-                    </div>
-                    <div class="">
-                        <h2>CART
-                            <img2 src="shopping-cart.png" alt="shopping cart" width="20px" height="20em">
-                        </h2>
-                    </div>
-				
-			    </div>
-		    </div>
             <table>
                 <tr>
                     <th>Flavour</th>
                     <th>Qty</th>
-                    <th></th>
-                    <th></th>
+                    <th> </th>
+                    <th> </th>
                     <th>Total</th>
                 </tr>
                 <template x-for="pizza in cart.pizzas">
                     <tr>
-                        
                         <td x-text="pizza.flavour"></td>
                         <td x-text="pizza.qty"></td>
                         <td><button x-on:click="remove(pizza)">-</button></td>
                         <td><button x-on:click="add(pizza)">+</button></td>
                         <td x-text="pizza.total.toFixed(2)"></td>
-                        
-                    </tr>
+                    </tr>                   
                 </template>
+                <tr>
+                        <td colspan="2">
+                            <div x-show="payNow">
+                                <div class="message" x-text="paymentMessage"></div>
+                                <div>
+                                    <label for="">Payment Amount = R <span x-text="paymentAmount"></span> </label>
+                                    <input class="input" type="number" placeholder="Payment Amount" x-model="paymentAmount">
+                                    <button x-show='pizza.total()>0' x-on:click="makePayment" class="btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY NOW</button>                                            
+                                </div>  
+                            </div>                    
+                        </td>
+                        <td>
+                            <button x-show='cartTotal()>0' x-show="payNow" x-on:click="payNow=true" class= "btn"><img src="shopping-cart.png" alt="Shopping cart" width="20px" height="20px">PAY</button>
+                        </td>
+                    </tr>
             </table>
         </div>
         
         <table>
             <template x-for="pizza in pizzas">
                 <tr>
+                    
                     <td x-text="pizza.flavour"></td>
-                    <td x-text="pizza.size"></td>
-                    <td x-text="pizza.price"></td>
-                    <td>
-                        
-                        <button x-on:click="add(pizza)">BUY</button>
-                    </td>
                     <td>
                         <div class="one__icon"><strong x-text="pizza.size"></strong></div>
                     </td>
+                    <td x-text="pizza.price"></td>
+                    <td>
+                        <button x-on:click="add(pizza)">BUY</button>
+                    </td>
+                    
                 </tr>
             </template>        
         </table>
