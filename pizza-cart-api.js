@@ -123,17 +123,16 @@ document.addEventListener('alpine:init', () => {
                         this.paymentMessage = 'Payment successful!'
           
                         setTimeout(() => {
-                          this.checkout = false;
+                          this.payNow = false;
                           this.cart.total= 0;
                           this.userName="";
                           this.display=false;
+                          this.cart=[];
                      },3000);
           
           
                     } else {
-                        this.paymentMessage = 'insufficient amount!'  
-                        
-                        
+                        this.paymentMessage = 'Insufficient amount!'
                     }  
                     
                      
